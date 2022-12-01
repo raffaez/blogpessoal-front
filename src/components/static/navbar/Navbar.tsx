@@ -14,6 +14,8 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
+import './Navbar.css';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -177,10 +179,21 @@ export default function PrimarySearchAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Blog Pessoal
-          </Typography>
-          home postagens temas cadastrar tema
+          <Link to='/home'>
+            <Typography className={classes.title} variant="h6" noWrap>
+              Home
+            </Typography>
+          </Link>
+          <Link to='/posts'>
+            <Typography className={classes.title} variant="h6" noWrap>
+              Postagens
+            </Typography>
+          </Link>
+          <Link to='/themes'>
+            <Typography className={classes.title} variant="h6" noWrap>
+              Temas
+            </Typography>
+          </Link>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
