@@ -1,12 +1,4 @@
-.text-decorator-none {
-  text-decoration: none;
-}
-
-.text-bold {
-  font-weight: bold;
-}
-
-.img {
+.img2 {
   background-image: url(../../../public/login.jpg);
   background-repeat: no-repeat;
   width: 100vh;
@@ -15,10 +7,15 @@
   background-position: center;
 }
 
-.form {
-  padding: 0 20%;
+.text-bold {
+  font-weight: bold !important;
 }
 
 .text-center {
   text-align: center;
+}
+
+.btn-cancelar {
+  margin-right: 20px !important;
+  text-decoration: none;
 }

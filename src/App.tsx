@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-d
 
 import Footer from './components/static/footer/Footer';
 import Navbar from './components/static/navbar/Navbar';
+import CadastroUsuario from './pages/cadastroUsuario/CadastroUsuario';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Postagens from './pages/postagens/Postagens';
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/cadastroUsuario' element={<CadastroUsuario />} />
         <Route path='/home' element={<Home />} />
         <Route path='/postagens' element={<Postagens />} />
         <Route path='/temas' element={<Temas />} />
