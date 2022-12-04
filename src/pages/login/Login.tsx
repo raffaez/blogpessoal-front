@@ -22,10 +22,10 @@ export default function Login() {
           </Typography>
           <form className="form">
             <TextField
-              id="usuario"
-              label="Usuário"
+              id="email"
+              label="E-mail"
               variant="outlined"
-              name="usuario"
+              name="email"
               margin="normal"
               fullWidth
             />
