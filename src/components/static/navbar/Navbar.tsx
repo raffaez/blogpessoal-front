@@ -16,6 +16,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import './Navbar.css';
 import { Link } from 'react-router-dom';
+import { Box } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -122,7 +123,9 @@ export default function PrimarySearchAppBar() {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+      <Link to='login' className='text-decorator-none'>
+        <MenuItem>Login</MenuItem>
+      </Link>
     </Menu>
   );
 
@@ -179,17 +182,17 @@ export default function PrimarySearchAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Link to='/home'>
+          <Link to='/home' className='text-decorator-none nav-link'>
             <Typography className={classes.title} variant="h6" noWrap>
               Home
             </Typography>
           </Link>
-          <Link to='/posts'>
+          <Link to='/postagens' className='text-decorator-none nav-link'>
             <Typography className={classes.title} variant="h6" noWrap>
               Postagens
             </Typography>
           </Link>
-          <Link to='/themes'>
+          <Link to='/temas' className='text-decorator-none nav-link'>
             <Typography className={classes.title} variant="h6" noWrap>
               Temas
             </Typography>

@@ -1,21 +1,25 @@
+import './App.css';
+
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
+
+import Footer from './components/static/footer/Footer';
 import Navbar from './components/static/navbar/Navbar';
 import Home from './pages/home/Home';
-import Footer from './components/static/footer/Footer';
-import './App.css';
-import Posts from './pages/posts/Posts';
-import Themes from './pages/themes/Themes';
+import Login from './pages/login/Login';
+import Postagens from './pages/postagens/Postagens';
+import Temas from './pages/temas/Temas';
 
 function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Login />} />
+        <Route path='/login' element={<Login />} />
         <Route path='/home' element={<Home />} />
-        <Route path='/posts' element={<Posts />} />
-        <Route path='/themes' element={<Themes />} />
+        <Route path='/postagens' element={<Postagens />} />
+        <Route path='/temas' element={<Temas />} />
         <Route path='*' element={<Navigate to='/' replace />} />
       </Routes>
       <Footer />

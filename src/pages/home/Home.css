@@ -1,6 +1,24 @@
-.title {
-  color: aquamarine;
-  text-align: center;
+.caixa {
+  background-color: #3F51B5;
+}
+
+.text-decorator-none {
+  text-decoration: none;
+}
+
+.titulo {
+  color: white;
+  font-weight: bold;
+}
+
+.botao {
+  border-color: white !important;
+  background-color: #3F51B5;
+  color: white !important;
+}
+
+.postagens {
+  background-color: white;
 }
 
 .img {

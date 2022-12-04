@@ -1,4 +1,9 @@
-a {
+.text-decorator-none {
   text-decoration: none;
-  margin-left: 20px;
+  color: black;
+}
+
+.nav-link {
+  color: white;
+  padding: 5px;
 }
