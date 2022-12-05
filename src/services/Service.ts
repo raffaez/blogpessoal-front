@@ -6,7 +6,7 @@ export const api = axios.create({
 
 export const cadastroUsuario = async(url: string, dados: any, setDado: any) => {
   const resposta = await api.post(url, dados);
-  setDado(resposta.status.toFixed);
+  setDado(resposta.data);
 }
 
 export const login = async(url: string, dados: any, setDado: any) => {

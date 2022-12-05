@@ -7,31 +7,28 @@ import { Link, useNavigate } from "react-router-dom";
 
 import User from "../../models/User";
 import { cadastroUsuario } from "../../services/Service";
-import UserResult from '../../models/UserResult';
 
 export default function CadastroUsuario() {
   let navigate = useNavigate();
   const [confirmarSenha, setConfirmarSenha] = useState<String>("");
   const [user, setUser] = useState<User>({
-    nome: "",
-    sobrenome: "",
-    email: "",
-    senha: "",
-  });
-
-  const [userResult, setUserResult] = useState<UserResult>({
     id: 0,
     nome: "",
     sobrenome: "",
     email: "",
-    senha: "",
-    foto: "",
+    senha: ""
+  });
+
+  const [userResult, setUserResult] = useState<User>({
+    id: 0,
+    nome: "",
+    sobrenome: "",
+    email: "",
+    senha: ""
   });
 
   useEffect(() => {
-    console.log(user);
     if (userResult.id != 0) {
-      console.log(2);
       navigate("/login");
     }
   }, [userResult]);
