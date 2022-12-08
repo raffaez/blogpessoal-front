@@ -187,7 +187,7 @@ export default function PrimarySearchAppBar() {
               Home
             </Typography>
           </Link>
-          <Link to='/postagens' className='text-decorator-none nav-link'>
+          <Link to='/posts' className='text-decorator-none nav-link'>
             <Typography className={classes.title} variant="h6" noWrap>
               Postagens
             </Typography>
