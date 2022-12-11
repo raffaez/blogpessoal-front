@@ -1,17 +1,19 @@
-import "./Login.css";
+import './Login.css';
 
-import { Box } from "@material-ui/core";
-import { Button, Grid, TextField, Typography } from "@mui/material";
-import { ChangeEvent, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import useLocalStorage from "react-use-localstorage";
-import { login } from "../../services/Service";
+import { Box } from '@material-ui/core';
+import { Button, Grid, TextField, Typography } from '@mui/material';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import useLocalStorage from 'react-use-localstorage';
 
-import UserLogin from "../../models/UserLogin";
+import UserLogin from '../../models/UserLogin';
+import { login } from '../../services/Service';
 
 export default function Login() {
   let navigate = useNavigate();
   const [token, setToken] = useLocalStorage("token");
+  const [user, setUser] = useLocalStorage("user");
   const [userLogin, setUserLogin] = useState<UserLogin>({
     id: 0,
     email: "",
@@ -28,6 +30,7 @@ export default function Login() {
 
   useEffect(() => {
     if (token != "") {
+      setUser(userLogin.id.toString());
       navigate("/home");
     }
   }, [token]);
@@ -38,9 +41,9 @@ export default function Login() {
     try {
       await login(`/auth/login`, userLogin, setToken);
 
-      alert("Usuário logado com sucesso!");
+      toast.success("Usuário logado com sucesso!");
     } catch (error) {
-      alert(`E-mail ou senha incorreta.`);
+      toast.warn(`E-mail ou senha incorreta.`);
     }
   }
 

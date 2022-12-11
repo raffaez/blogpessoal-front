@@ -93,6 +93,12 @@ export default function PrimarySearchAppBar() {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    window.location.reload();
+  }
+
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -123,9 +129,14 @@ export default function PrimarySearchAppBar() {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-      <Link to='login' className='text-decorator-none'>
-        <MenuItem>Login</MenuItem>
-      </Link>
+      {
+        localStorage.getItem('token') ?
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+        :
+        <Link to='login' className='text-decorator-none'>
+          <MenuItem>Login</MenuItem>
+        </Link>
+      }
     </Menu>
   );
 

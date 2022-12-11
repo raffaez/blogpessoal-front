@@ -1,10 +1,12 @@
+import './ListaTema.css';
+
+import { Box, Button, Card, CardActions, CardContent, Typography } from '@mui/material';
 import React, { ReactElement, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Box, Card, CardActions, CardContent, Button, Typography } from '@mui/material';
-import './ListaTema.css';
-import Tema from '../../../models/Tema';
-import useLocalStorage from 'react-use-localstorage';
 import { toast } from 'react-toastify';
+import useLocalStorage from 'react-use-localstorage';
+
+import Tema from '../../../models/Tema';
 import { busca } from '../../../services/Service';
 
 function ListaTema() {
@@ -21,7 +23,7 @@ function ListaTema() {
   }, [token]);
 
   async function getTema(){
-    await busca("/tema", setTemas, {
+    await busca("/temas", setTemas, {
       headers: {
         'Authorization': token
       }
