@@ -8,6 +8,7 @@ import useLocalStorage from 'react-use-localstorage';
 
 import Postagem from '../../../models/Postagem';
 import { busca } from '../../../services/Service';
+import ModalPostagem from '../modalPostagem/ModalPostagem';
 
 function ListaPostagem() {
   const [posts, setPosts] = useState<Postagem[]>([]);
@@ -22,7 +23,7 @@ function ListaPostagem() {
     }
   }, [token]);
 
-  async function getPostagem(){
+  async function getPost(){
     await busca("/postagens", setPosts, {
       headers: {
         'Authorization': token
@@ -31,12 +32,14 @@ function ListaPostagem() {
   }
 
   useEffect(() => {
-    getPostagem();
+    getPost();
   }, [posts.length]);
 
 
   return (
-    <>{
+    <>
+    <ModalPostagem />
+    {
       posts.map(post => (
 
         <Box m={2} >
@@ -57,14 +60,14 @@ function ListaPostagem() {
             </CardContent>
             <CardActions>
               <Box display="flex" justifyContent="center" mb={1.5}>
-                <Link to={`/formularioPost/${post.id}`} className="text-decorator-none" >
+                <Link to={`/formularioPostagem/${post.id}`} className="text-decorator-none" >
                   <Box mx={1}>
                     <Button variant="contained" className="marginLeft" size='small' color="primary">
                       atualizar
                     </Button>
                   </Box>
                 </Link>
-                <Link to={`/deletarPost/${post.id}`} className="text-decorator-none">
+                <Link to={`/deletarPostagem/${post.id}`} className="text-decorator-none">
                   <Box mx={1}>
                     <Button variant="contained" size='small' color="secondary">
                       deletar
