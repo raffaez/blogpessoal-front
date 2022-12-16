@@ -1,14 +1,14 @@
-import './Login.css';
+import "./Login.css";
 
-import { Box } from '@material-ui/core';
-import { Button, Grid, TextField, Typography } from '@mui/material';
-import { ChangeEvent, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import useLocalStorage from 'react-use-localstorage';
+import { Box } from "@material-ui/core";
+import { Button, Grid, TextField, Typography } from "@mui/material";
+import { ChangeEvent, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import useLocalStorage from "react-use-localstorage";
 
-import UserLogin from '../../models/UserLogin';
-import { login } from '../../services/Service';
+import UserLogin from "../../models/UserLogin";
+import { login } from "../../services/Service";
 
 export default function Login() {
   let navigate = useNavigate();

@@ -1,13 +1,13 @@
-import './CadastroUsuario.css';
+import "./CadastroUsuario.css";
 
-import { Box } from '@material-ui/core';
-import { Button, Grid, TextField, Typography } from '@mui/material';
-import React, { ChangeEvent, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { Box } from "@material-ui/core";
+import { Button, Grid, TextField, Typography } from "@mui/material";
+import React, { ChangeEvent, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-import User from '../../models/User';
-import { cadastroUsuario } from '../../services/Service';
+import User from "../../models/User";
+import { cadastroUsuario } from "../../services/Service";
 
 export default function CadastroUsuario() {
   let navigate = useNavigate();
@@ -17,7 +17,7 @@ export default function CadastroUsuario() {
     nome: "",
     sobrenome: "",
     email: "",
-    senha: ""
+    senha: "",
   });
 
   const [userResult, setUserResult] = useState<User>({
@@ -25,7 +25,7 @@ export default function CadastroUsuario() {
     nome: "",
     sobrenome: "",
     email: "",
-    senha: ""
+    senha: "",
   });
 
   useEffect(() => {

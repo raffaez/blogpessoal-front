@@ -1,22 +1,27 @@
-import React from "react";
-import { alpha, makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import "./Navbar.css";
+
 import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
-import MenuItem from "@material-ui/core/MenuItem";
+import IconButton from "@material-ui/core/IconButton";
+import InputBase from "@material-ui/core/InputBase";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
+import MenuItem from "@material-ui/core/MenuItem";
+import {
+  alpha,
+  createStyles,
+  makeStyles,
+  Theme,
+} from "@material-ui/core/styles";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+import MenuIcon from "@material-ui/icons/Menu";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import './Navbar.css';
-import { Link, useNavigate } from 'react-router-dom';
-import { Box } from '@material-ui/core';
+import NotificationsIcon from "@material-ui/icons/Notifications";
+import SearchIcon from "@material-ui/icons/Search";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -96,10 +101,10 @@ export default function PrimarySearchAppBar() {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    navigate('/login');
-  }
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -131,14 +136,13 @@ export default function PrimarySearchAppBar() {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-      {
-        localStorage.getItem('token') ?
+      {localStorage.getItem("token") ? (
         <MenuItem onClick={handleLogout}>Logout</MenuItem>
-        :
-        <Link to='login' className='text-decorator-none'>
+      ) : (
+        <Link to="login" className="text-decorator-none">
           <MenuItem>Login</MenuItem>
         </Link>
-      }
+      )}
     </Menu>
   );
 
@@ -195,17 +199,17 @@ export default function PrimarySearchAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Link to='/home' className='text-decorator-none nav-link'>
+          <Link to="/home" className="text-decorator-none nav-link">
             <Typography className={classes.title} variant="h6" noWrap>
               Home
             </Typography>
           </Link>
-          <Link to='/posts' className='text-decorator-none nav-link'>
+          <Link to="/posts" className="text-decorator-none nav-link">
             <Typography className={classes.title} variant="h6" noWrap>
               Postagens
             </Typography>
           </Link>
-          <Link to='/temas' className='text-decorator-none nav-link'>
+          <Link to="/temas" className="text-decorator-none nav-link">
             <Typography className={classes.title} variant="h6" noWrap>
               Temas
             </Typography>

@@ -1,48 +1,52 @@
-import './ListaPostagem.css';
+import "./ListaPostagem.css";
 
-import { Box, Button, Card, CardActions, CardContent, Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import useLocalStorage from 'react-use-localstorage';
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Typography,
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import useLocalStorage from "react-use-localstorage";
 
-import Postagem from '../../../models/Postagem';
-import { busca } from '../../../services/Service';
-import ModalPostagem from '../modalPostagem/ModalPostagem';
+import Postagem from "../../../models/Postagem";
+import { busca } from "../../../services/Service";
+import ModalPostagem from "../modalPostagem/ModalPostagem";
 
 function ListaPostagem() {
   const [posts, setPosts] = useState<Postagem[]>([]);
-  const [token, setToken] = useLocalStorage('token');
+  const [token, setToken] = useLocalStorage("token");
 
   let navigate = useNavigate();
 
   useEffect(() => {
-    if(token == ''){
+    if (token == "") {
       toast.warn("Você precisa estar logado para acessar esta página");
-      navigate('/login');
+      navigate("/login");
     }
   }, [token]);
 
-  async function getPost(){
+  async function getPost() {
     await busca("/postagens", setPosts, {
       headers: {
-        'Authorization': token
-      }
-    })
+        Authorization: token,
+      },
+    });
   }
 
   useEffect(() => {
     getPost();
   }, [posts.length]);
 
-
   return (
     <>
-    <ModalPostagem />
-    {
-      posts.map(post => (
-
-        <Box m={2} >
+      <ModalPostagem />
+      {posts.map((post) => (
+        <Box m={2}>
           <Card variant="outlined">
             <CardContent>
               <Typography color="textSecondary" gutterBottom>
@@ -60,16 +64,27 @@ function ListaPostagem() {
             </CardContent>
             <CardActions>
               <Box display="flex" justifyContent="center" mb={1.5}>
-                <Link to={`/formularioPostagem/${post.id}`} className="text-decorator-none" >
+                <Link
+                  to={`/formularioPostagem/${post.id}`}
+                  className="text-decorator-none"
+                >
                   <Box mx={1}>
-                    <Button variant="contained" className="marginLeft" size='small' color="primary">
+                    <Button
+                      variant="contained"
+                      className="marginLeft"
+                      size="small"
+                      color="primary"
+                    >
                       atualizar
                     </Button>
                   </Box>
                 </Link>
-                <Link to={`/deletarPostagem/${post.id}`} className="text-decorator-none">
+                <Link
+                  to={`/deletarPostagem/${post.id}`}
+                  className="text-decorator-none"
+                >
                   <Box mx={1}>
-                    <Button variant="contained" size='small' color="secondary">
+                    <Button variant="contained" size="small" color="secondary">
                       deletar
                     </Button>
                   </Box>
@@ -78,10 +93,8 @@ function ListaPostagem() {
             </CardActions>
           </Card>
         </Box>
-
-      ))
-      }
+      ))}
     </>
-    )
+  );
 }
 export default ListaPostagem;
